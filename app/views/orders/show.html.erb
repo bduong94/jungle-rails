@@ -13,12 +13,12 @@
       <thead>
         <tr>
           <th colspan="2">Product</th>
-          <th>Unit Price</th>
           <th>Quantity</th>
-          <th>Price</th>
+          <th>Item Total</th>
         </tr>
       </thead>
       <tbody>
+        <%raise @line_items.inspect %>
       </tbody>
       <tfoot>
         <tr>
@@ -31,7 +31,7 @@
       </tfoot>
     </table>
   </div>
-  
+
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
 
 </section>

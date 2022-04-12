@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @line_items = LineItem.where("order_id = #{params[:id]}")
     @products = Product.all
+    @sum = @line_items.map {|item| item[:total_price_cents]}.sum
   end
 
   def create

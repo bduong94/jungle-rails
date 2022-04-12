@@ -18,7 +18,10 @@
         </tr>
       </thead>
       <tbody>
-        <%raise @line_items.inspect %>
+        
+        <% @line_items.each do |item| %>
+          <%= render 'item', product: @products.select { |product| product[:id] == item[:product_id] }[0], quanity: item[:quantity].to_i, total: item[:total_price_cents].to_f %>
+        <% end %>
       </tbody>
       <tfoot>
         <tr>

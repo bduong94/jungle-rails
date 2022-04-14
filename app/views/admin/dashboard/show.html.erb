@@ -12,7 +12,7 @@
     <tr>
         <td>Number of Products</td>
         <td><%=@products.count%></td>
-        <td><a href="admin/products">Products</a></td>
+        <td><%= link_to 'Products', [:admin,:products] %></td>
     </tr>
     <tr>
         <td>Number of Categories</td>

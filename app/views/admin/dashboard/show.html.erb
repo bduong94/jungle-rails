@@ -1,4 +1,27 @@
-<div class="page-header">
-    <h1>Dashboard</h1>
+<div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><h3>Store Information</h3></div>
+
+  <!-- Table -->
+  <table class="table admin-information">
+    <tr>
+        <th>Description</th>
+        <th>Quantity</th>
+        <th>Link</th>
+    </tr>
+    <tr>
+        <td>Number of Products</td>
+        <td><%=@products.count%></td>
+        <td><a href="admin/products">Products</a></td>
+    </tr>
+    <tr>
+        <td>Number of Categories</td>
+        <td><%=@categories.count%></td>
+        <td>
+            <%@categories.each do |category|%>
+                <%= render 'category_link', category: category %>
+            <%end%>
+        </td>
+    </tr>
+  </table>
 </div>
-<p>Find me in app/views/admin/dashboard/show.html.erb</p>

@@ -28,6 +28,7 @@ describe "Tests for Products" do
     it "Does not contain a name" do
       @sample_product.name = nil
       expect(@sample_product).to_not be_valid
+      expect(@sample_product.errors.full_messages).to include("Name can't be blank")
     end
 
     it "Does not contain a price" do

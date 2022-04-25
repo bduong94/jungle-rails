@@ -32,6 +32,9 @@ describe "Tests for Products" do
     end
 
     it "Does not contain a price" do
+      @sample_product.price_cents = nil
+      expect(@sample_product).to_not be_valid
+      expect(@sample_product.errors.full_messages).to include("Price can't be blank")
     end
 
     it "Does not contain a quantity" do

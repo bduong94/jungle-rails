@@ -26,10 +26,8 @@ describe "Tests for Products" do
     end
 
     it "Does not contain a name" do
-      # expect(sample_product.name).to be_nil
-      # expect(sample_product.price_cents).to_not be_nil
-      # expect(sample_product.quantity).to_not be_nil
-      # expect(sample_product.category_id).to_not be_nil
+      @sample_product.name = nil
+      expect(@sample_product).to_not be_valid
     end
 
     it "Does not contain a price" do

@@ -2,7 +2,7 @@ require 'rails_helper'
 require "Product"
 require "Category"
 
-describe "Tests for Products" do
+RSpec.describe Product, type: :model do
   describe "Validations" do
     before do
       @sample_category = Category.new({name:"Furniture"})

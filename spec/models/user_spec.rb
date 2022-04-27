@@ -13,7 +13,7 @@ RSpec.describe User, type: :model do
 
   describe 'Validations' do
     before do
-      @first_user = User.new({first_name: "Tom", last_name:"Dinkle", email: "test123@test.com", password:"Fast", password_confirmation:"Fast"})
+      @first_user = User.new({first_name: "Tom", last_name:"Dinkle", email: "test123@test.com", password:"Partner", password_confirmation:"Partner"})
       @second_user = User.new({first_name: "Dingle", last_name:"Berg", email: "teSt123@test.com", password:"Flesh", password_confirmation:"Flesh"})
     end
 
@@ -62,6 +62,13 @@ RSpec.describe User, type: :model do
       @first_user.save
       @second_user.save
       expect(@second_user.errors.full_messages).to include("Email has already been taken")
+    end
+
+    it 'does not have a minimum password length' do
+      @first_user.password = "two"
+      @first_user.password_confirmation = "two"
+      @first_user.save
+      expect(@first_user.errors.full_messages).to include("Password is too short (minimum is 5 characters)")
     end
   end
 

@@ -73,5 +73,24 @@ RSpec.describe User, type: :model do
   end
 
   describe '.authenticate_with_credentials' do
+    before do
+      @first_user = User.new({first_name: "Tom", last_name:"Dinkle", email: "test123@test.com", password:"Partner", password_confirmation:"Partner"})
+      @first_user.save
+    end
+
+    it "should authenticate the email and password successfully" do
+      email = "test123@test.com"
+      password = "Partner"
+      user = User.authenticate_with_credentials(email, password)
+      expect(user).to eq(@first_user)
+    end
+
+    it "should not authenticate the email and password successfully" do
+      email = "test123@test.com"
+      password = "past123"
+      user = User.authenticate_with_credentials(email, password)
+      expect(user).to be_nil
+    end
+
   end
 end

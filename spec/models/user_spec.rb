@@ -14,7 +14,7 @@ RSpec.describe User, type: :model do
   describe 'Validations' do
     before do
       @first_user = User.new({first_name: "Tom", last_name:"Dinkle", email: "test123@test.com", password:"Fast", password_confirmation:"Fast"})
-      @second_user = User.new({first_name: "Dingle", last_name:"Berg", email: "test123@test.com", password:"Flesh", password_confirmation:"Flesh"})
+      @second_user = User.new({first_name: "Dingle", last_name:"Berg", email: "teSt123@test.com", password:"Flesh", password_confirmation:"Flesh"})
     end
 
     it 'Creates the new user' do
@@ -58,7 +58,7 @@ RSpec.describe User, type: :model do
       expect(@first_user.errors.full_messages).to include("Password confirmation doesn't match Password")
     end
 
-    it 'does not use a unique email' do
+    it 'does not use a unique email (case sensitivity does not matter)' do
       @first_user.save
       @second_user.save
       expect(@second_user.errors.full_messages).to include("Email has already been taken")

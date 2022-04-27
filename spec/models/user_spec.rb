@@ -2,15 +2,6 @@ require 'rails_helper'
 require 'User'
 
 RSpec.describe User, type: :model do
-  # create_table "users", force: :cascade do |t|
-  #   t.string   "first_name"
-  #   t.string   "last_name"
-  #   t.string   "email"
-  #   t.string   "password_digest"
-  #   t.datetime "created_at",      null: false
-  #   t.datetime "updated_at",      null: false
-  # end
-
   describe 'Validations' do
     before do
       @first_user = User.new({first_name: "Tom", last_name:"Dinkle", email: "test123@test.com", password:"Partner", password_confirmation:"Partner"})

@@ -14,46 +14,54 @@ RSpec.describe User, type: :model do
   describe 'Validations' do
     before do
       @first_user = User.new({first_name: "Tom", last_name:"Dinkle", email: "test123@test.com", password:"Fast", password_confirmation:"Fast"})
+      @second_user = User.new({first_name: "Dingle", last_name:"Berg", email: "test123@test.com", password:"Flesh", password_confirmation:"Flesh"})
     end
 
     it 'Creates the new user' do
+      @first_user.save
       expect(@first_user).to be_valid
     end
 
     it 'does not have a blank first_name' do
       @first_user.first_name = nil
-      expect(@first_user).to_not be_valid
+      @first_user.save
       expect(@first_user.errors.full_messages).to include("First name can't be blank")
     end
 
     it 'does not have a blank last_name' do
       @first_user.last_name = nil
-      expect(@first_user).to_not be_valid
+      @first_user.save
       expect(@first_user.errors.full_messages).to include("Last name can't be blank")
     end
 
     it 'does not have a blank email' do
       @first_user.email = nil
-      expect(@first_user).to_not be_valid
+      @first_user.save
       expect(@first_user.errors.full_messages).to include("Email can't be blank")
     end
 
     it 'does not have a blank password' do
       @first_user.password = nil
-      expect(@first_user).to_not be_valid
+      @first_user.save
       expect(@first_user.errors.full_messages).to include("Password can't be blank")
     end
 
     it 'does not have a blank password confirmation' do
       @first_user.password_confirmation = nil
-      expect(@first_user).to_not be_valid
+      @first_user.save
       expect(@first_user.errors.full_messages).to include("Password confirmation can't be blank")
     end
 
     it 'does not have matching password and password confirmation' do
+      @first_user.password_confirmation = "Fresh"
+      @first_user.save
+      expect(@first_user.errors.full_messages).to include("Password confirmation doesn't match Password")
     end
 
     it 'does not use a unique email' do
+      @first_user.save
+      @second_user.save
+      expect(@second_user.errors.full_messages).to include("Email has already been taken")
     end
   end
 

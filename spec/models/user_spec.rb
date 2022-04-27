@@ -85,6 +85,20 @@ RSpec.describe User, type: :model do
       expect(user).to eq(@first_user)
     end
 
+    it "should authenticate the email and password successfully with spaces" do
+      email = "  test123@test.com  "
+      password = "Partner"
+      user = User.authenticate_with_credentials(email, password)
+      expect(user).to eq(@first_user)
+    end
+
+    it "should authenticate the email and password successfully with capitlized characters" do
+      email = "TeSt123@test.com"
+      password = "Partner"
+      user = User.authenticate_with_credentials(email, password)
+      expect(user).to eq(@first_user)
+    end
+
     it "should not authenticate the email and password successfully" do
       email = "test123@test.com"
       password = "past123"

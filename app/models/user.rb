@@ -9,9 +9,8 @@ class User < ActiveRecord::Base
     validates :password_confirmation, presence: true
 
     def self.authenticate_with_credentials(email, password)
-        puts "#{email} , #{password}"
-        user = User.find_by_email(params[:email])
-        if user && user.authenticate(params[:password])
+        user = User.find_by("email ilike '#{email.strip}'")
+        if user && user.authenticate(password)
             user
         else
             nil

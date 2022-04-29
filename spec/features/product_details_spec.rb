@@ -19,11 +19,13 @@ RSpec.feature "ProductDetails", type: :feature, js: true do
     scenario "User visits first product item page" do
       #ACT
       visit root_path
-
+      first('.product').click_link('Details')
+      sleep 2
+      
       #DEBUG
       save_screenshot
 
       #VERIFY
-      expect(page).to have_css 'product-detail'
+      expect(page).to have_content 'Apparel'
     end
 end

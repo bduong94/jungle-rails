@@ -19,7 +19,10 @@ RSpec.feature "AddToCarts", type: :feature, js:true do
 
   scenario 'User visits home page and adds item to cart' do
     #ACT
-    
+    visit root_path
+    first('.product').click_button 'Add'
+    sleep 2
+
     #DEBUG
     save_screenshot
 

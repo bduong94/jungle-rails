@@ -20,13 +20,11 @@ RSpec.feature "ProductDetails", type: :feature, js: true do
       #ACT
       visit root_path
       first('.product').click_link('Details')
-      puts page.html
-      sleep 2
-      puts page.html
+
       #DEBUG
       save_screenshot
 
       #VERIFY
-      expect(page).to have_content 'Apparel'
+      expect(page).to have_css 'section.products-show'
     end
 end

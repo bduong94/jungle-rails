@@ -19,7 +19,6 @@ RSpec.feature "ProductDetails", type: :feature, js: true do
     scenario "User visits first product item page" do
       #ACT
       visit root_path
-      first('.product').click_link('Details')
 
       #DEBUG
       save_screenshot

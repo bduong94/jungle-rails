@@ -21,6 +21,7 @@ RSpec.feature "Visitor navigates to home page", type: :feature, js: true do
     
     # ACT
     visit root_path
+    first('.product').click_link('Details')
 
     # DEBUG
     save_screenshot
